@@ -17,13 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The CAT API" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeP-Eg-lTN">
-                                <rect key="frame" x="118" y="54" width="178" height="36"/>
+                                <rect key="frame" x="118" y="64" width="178" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cat-icon" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-XD-gmM">
+                                <rect key="frame" x="20" y="120" width="374" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="oZ6-84-IRF"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abP-bU-rpH">
-                                <rect key="frame" x="20" y="495" width="374" height="80"/>
+                                <rect key="frame" x="20" y="490" width="374" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsf-BZ-CQz">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
@@ -75,26 +81,24 @@
                                     <constraint firstAttribute="trailing" secondItem="5Wh-P2-zpa" secondAttribute="trailing" id="ms1-PZ-oU3"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cat-icon" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-XD-gmM">
-                                <rect key="frame" x="20" y="125" width="374" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="oZ6-84-IRF"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <color key="backgroundColor" red="0.15294117647058825" green="0.0078431372549019607" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="abP-bU-rpH" firstAttribute="top" secondItem="rKZ-XD-gmM" secondAttribute="bottom" constant="20" id="0Ki-2I-3mI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="abP-bU-rpH" secondAttribute="trailing" constant="20" id="H8M-Eq-CLL"/>
                             <constraint firstItem="rKZ-XD-gmM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ipk-Ml-9f0"/>
-                            <constraint firstItem="TeP-Eg-lTN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="V5v-Uy-P8m"/>
-                            <constraint firstItem="rKZ-XD-gmM" firstAttribute="top" secondItem="TeP-Eg-lTN" secondAttribute="bottom" constant="35" id="VSL-lD-ogf"/>
+                            <constraint firstItem="TeP-Eg-lTN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="V5v-Uy-P8m"/>
+                            <constraint firstItem="rKZ-XD-gmM" firstAttribute="top" secondItem="TeP-Eg-lTN" secondAttribute="bottom" constant="20" id="VSL-lD-ogf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rKZ-XD-gmM" secondAttribute="trailing" constant="20" id="moI-Tw-xOx"/>
                             <constraint firstItem="abP-bU-rpH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oOj-CY-MZx"/>
                             <constraint firstItem="TeP-Eg-lTN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vPf-gC-fJJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="breedImage" destination="rKZ-XD-gmM" id="ghc-PV-fvF"/>
+                        <outlet property="breedTitle" destination="TeP-Eg-lTN" id="jhd-eC-kkm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,9 +109,6 @@
         <image name="cat-icon" width="128" height="128"/>
         <image name="dislike-icon" width="50" height="50"/>
         <image name="like-icon" width="50" height="50"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
