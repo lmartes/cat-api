@@ -14,6 +14,7 @@
 		BF2A90B5275FF1F700444239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B3275FF1F700444239 /* Main.storyboard */; };
 		BF2A90B7275FF1F900444239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B6275FF1F900444239 /* Assets.xcassets */; };
 		BF2A90BA275FF1F900444239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B8275FF1F900444239 /* LaunchScreen.storyboard */; };
+		BF96536E27624A21001EB918 /* CatAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96536D27624A21001EB918 /* CatAPIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BF2A90B9275FF1F900444239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF2A90BB275FF1F900444239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFEFAACEC904AD3DBD0AE89 /* Pods-cat-api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cat-api.debug.xcconfig"; path = "Target Support Files/Pods-cat-api/Pods-cat-api.debug.xcconfig"; sourceTree = "<group>"; };
+		BF96536D27624A21001EB918 /* CatAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		BF2A90AC275FF1F700444239 /* cat-api */ = {
 			isa = PBXGroup;
 			children = (
+				BF96536C2762400F001EB918 /* Model */,
 				BF2A90AD275FF1F700444239 /* AppDelegate.swift */,
 				BF2A90AF275FF1F700444239 /* SceneDelegate.swift */,
 				BF2A90B1275FF1F700444239 /* ViewController.swift */,
@@ -90,6 +93,14 @@
 				BF2A90BB275FF1F900444239 /* Info.plist */,
 			);
 			path = "cat-api";
+			sourceTree = "<group>";
+		};
+		BF96536C2762400F001EB918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF96536D27624A21001EB918 /* CatAPIModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 				BF2A90B2275FF1F700444239 /* ViewController.swift in Sources */,
 				BF2A90AE275FF1F700444239 /* AppDelegate.swift in Sources */,
 				BF2A90B0275FF1F700444239 /* SceneDelegate.swift in Sources */,
+				BF96536E27624A21001EB918 /* CatAPIModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
