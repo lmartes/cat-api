@@ -14,9 +14,7 @@
 		BF2A90B5275FF1F700444239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B3275FF1F700444239 /* Main.storyboard */; };
 		BF2A90B7275FF1F900444239 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B6275FF1F900444239 /* Assets.xcassets */; };
 		BF2A90BA275FF1F900444239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF2A90B8275FF1F900444239 /* LaunchScreen.storyboard */; };
-		BF96536E27624A21001EB918 /* CatAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96536D27624A21001EB918 /* CatAPIModel.swift */; };
 		BFE0B9412762684A00BB056B /* CatAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0B9402762684A00BB056B /* CatAPIData.swift */; };
-		BFE0B94327626B6400BB056B /* CatAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0B94227626B6400BB056B /* CatAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +28,7 @@
 		BF2A90B6275FF1F900444239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF2A90B9275FF1F900444239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF2A90BB275FF1F900444239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF96536D27624A21001EB918 /* CatAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIModel.swift; sourceTree = "<group>"; };
 		BFE0B9402762684A00BB056B /* CatAPIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIData.swift; sourceTree = "<group>"; };
-		BFE0B94227626B6400BB056B /* CatAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIManager.swift; sourceTree = "<group>"; };
 		DBFEFAACEC904AD3DBD0AE89 /* Pods-cat-api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cat-api.debug.xcconfig"; path = "Target Support Files/Pods-cat-api/Pods-cat-api.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,9 +82,9 @@
 		BF2A90AC275FF1F700444239 /* cat-api */ = {
 			isa = PBXGroup;
 			children = (
+				BF2A90B6275FF1F900444239 /* Assets.xcassets */,
 				BF2A90AD275FF1F700444239 /* AppDelegate.swift */,
 				BF2A90AF275FF1F700444239 /* SceneDelegate.swift */,
-				BF2A90B6275FF1F900444239 /* Assets.xcassets */,
 				BF96536C2762400F001EB918 /* Model */,
 				BF94908527625ABD0096404D /* Controllers */,
 				BF94908627625ACB0096404D /* Views */,
@@ -117,8 +113,6 @@
 		BF96536C2762400F001EB918 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BFE0B94227626B6400BB056B /* CatAPIManager.swift */,
-				BF96536D27624A21001EB918 /* CatAPIModel.swift */,
 				BFE0B9402762684A00BB056B /* CatAPIData.swift */,
 			);
 			path = Model;
@@ -242,8 +236,6 @@
 				BF2A90B2275FF1F700444239 /* ViewController.swift in Sources */,
 				BF2A90AE275FF1F700444239 /* AppDelegate.swift in Sources */,
 				BF2A90B0275FF1F700444239 /* SceneDelegate.swift in Sources */,
-				BFE0B94327626B6400BB056B /* CatAPIManager.swift in Sources */,
-				BF96536E27624A21001EB918 /* CatAPIModel.swift in Sources */,
 				BFE0B9412762684A00BB056B /* CatAPIData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
