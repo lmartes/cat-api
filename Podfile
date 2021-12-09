@@ -7,5 +7,6 @@ target 'cat-api' do
 
   # Pods for cat-api
   pod 'Alamofire', '~> 5.4'
+  pod 'ObjectMapper', '~> 3.5'
 
 end
