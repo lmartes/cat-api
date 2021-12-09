@@ -28,8 +28,8 @@
 		BF2A90B6275FF1F900444239 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF2A90B9275FF1F900444239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF2A90BB275FF1F900444239 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBFEFAACEC904AD3DBD0AE89 /* Pods-cat-api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cat-api.debug.xcconfig"; path = "Target Support Files/Pods-cat-api/Pods-cat-api.debug.xcconfig"; sourceTree = "<group>"; };
 		BF96536D27624A21001EB918 /* CatAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIModel.swift; sourceTree = "<group>"; };
+		DBFEFAACEC904AD3DBD0AE89 /* Pods-cat-api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cat-api.debug.xcconfig"; path = "Target Support Files/Pods-cat-api/Pods-cat-api.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,6 @@
 				DBFEFAACEC904AD3DBD0AE89 /* Pods-cat-api.debug.xcconfig */,
 				82809A1FF7DB6D406915441C /* Pods-cat-api.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,16 +82,32 @@
 		BF2A90AC275FF1F700444239 /* cat-api */ = {
 			isa = PBXGroup;
 			children = (
-				BF96536C2762400F001EB918 /* Model */,
 				BF2A90AD275FF1F700444239 /* AppDelegate.swift */,
 				BF2A90AF275FF1F700444239 /* SceneDelegate.swift */,
-				BF2A90B1275FF1F700444239 /* ViewController.swift */,
-				BF2A90B3275FF1F700444239 /* Main.storyboard */,
 				BF2A90B6275FF1F900444239 /* Assets.xcassets */,
+				BF96536C2762400F001EB918 /* Model */,
+				BF94908527625ABD0096404D /* Controllers */,
+				BF94908627625ACB0096404D /* Views */,
 				BF2A90B8275FF1F900444239 /* LaunchScreen.storyboard */,
 				BF2A90BB275FF1F900444239 /* Info.plist */,
 			);
 			path = "cat-api";
+			sourceTree = "<group>";
+		};
+		BF94908527625ABD0096404D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF2A90B1275FF1F700444239 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF94908627625ACB0096404D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF2A90B3275FF1F700444239 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BF96536C2762400F001EB918 /* Model */ = {
