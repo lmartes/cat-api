@@ -10,11 +10,6 @@ struct CatBreedResponse: Mappable {
     
     init() {}
     
-    init(like: Bool, date: Date) {
-        self.like = like
-        self.date = date
-    }
-    
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {
@@ -33,5 +28,10 @@ struct CatBreedResponse: Mappable {
     
     func getCatBreedImage() -> CatBreedImage {
         return image!
+    }
+    
+    mutating func setAction(like: Bool, date: Date) {
+        self.like = like
+        self.date = date
     }
 }
