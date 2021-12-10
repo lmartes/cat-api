@@ -1,88 +1,53 @@
 import UIKit
-import Alamofire
-import ObjectMapper
 import SVProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CatBreedManagerDelegate {
     @IBOutlet weak var breedTitle: UILabel!
     @IBOutlet weak var breedImage: UIImageView!
     @IBOutlet weak var breedActionsView: UIView!
-    private var catsByBreed: [CatBreedResponse] = []
+    var catBreedManager: CatBreedManager = CatBreedManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestCatAPI()
+        catBreedManager.delegate = self
+        catBreedManager.fetchBreeds()
     }
     
-    func requestCatAPI() {
-        loadingRequest()
-        //let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
-        let url = "https://api.thecatapi.com/v1/breeds?limit=20&page=0"
-        AF.request(url).responseJSON { (response) in
-            if let error = response.error {
-                print("Error: ", error)
-            }
-            
-            if let data = response.data {
-                self.parseJSON(data)
-            }
-        }
-    }
-    
-    func parseJSON(_ data: Data) {
-        let str = String(decoding: data, as: UTF8.self)
-        guard let cats = Mapper<CatBreedResponse>().mapArray(JSONString: str) else {
-            return
-        }
-        
-        catsByBreed = cats
-        DispatchQueue.main.async {
-            self.updateUI()
-            self.finishingRequest()
-        }
-    }
-    
-    private func loadingRequest() {
+    func didLoadRequest() {
         SVProgressHUD.show()
         breedTitle.isHidden = true
         breedImage.isHidden = true
         breedActionsView.isHidden = true
     }
     
-    private func finishingRequest() {
+    func didFinishRequest() {
         SVProgressHUD.dismiss()
         breedTitle.isHidden = false
         breedImage.isHidden = false
         breedActionsView.isHidden = false
     }
     
-    func updateUI() {
-        if catsByBreed.count <= 0 {
-            return
+    func didBreedUpdate(_ catBreedManager: CatBreedManager, catByBreed: CatBreedResponse) {
+        DispatchQueue.main.async {
+            self.breedTitle.text = catByBreed.getName()
+            guard let breedImageURL = catByBreed.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
+                return
+            }
+            self.breedImage.image = UIImage(data: data)
         }
-        
-        guard let cat = catsByBreed.first else {
-            return
-        }
-        
-        let breedName = cat.getName()
-        breedTitle.text = breedName
-        
-        guard let breedImageURL = cat.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
-            return
-        }
-        self.breedImage.image = UIImage(data: data)
-        
-        catsByBreed.removeFirst()
+    }
+    
+    func didFailWithError(error: Error) {
+        print("Error: ", error)
     }
     
 // MARK: - IBActions
     @IBAction func actionLike(_ sender: Any) {
-        updateUI()
+        catBreedManager.getCatBreed()
     }
     
     @IBAction func actionDislike(_ sender: Any) {
-        updateUI()
+        catBreedManager.getCatBreed()
     }
 }
 
