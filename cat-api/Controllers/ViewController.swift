@@ -47,18 +47,33 @@ class ViewController: UIViewController, CatBreedManagerDelegate {
     
 // MARK: - IBActions
     @IBAction func actionLike(_ sender: Any) {
-        catBreedResponse.setAction(like: true, date: Date())
-        storeDefaultsCatBreeds.append(catBreedResponse)
-
-        defaults.set(storeDefaultsCatBreeds, forKey: UserDefaultsKeys.catBreeds.rawValue)
+        saveUserDefaults(withActionsLike: true)
         catBreedManager.getCatBreed()
     }
     
+    /// guard let str = defaults.string(forKey: UserDefaultsKeys.catBreeds.rawValue) else {
+    ///     return
+    /// }
+    /// print(str)
     @IBAction func actionDislike(_ sender: Any) {
-        guard let savedArray = defaults.object(forKey: UserDefaultsKeys.catBreeds.rawValue) as? [CatBreedResponse] else {
+        saveUserDefaults(withActionsLike: false)
+        catBreedManager.getCatBreed()
+    }
+    
+    private func saveUserDefaults(withActionsLike: Bool) {
+        catBreedResponse.setAction(like: withActionsLike, date: getCurrentDateString())
+        storeDefaultsCatBreeds.append(catBreedResponse)
+        guard let data = storeDefaultsCatBreeds.toJSONString(prettyPrint: false) else {
             return
         }
-        print("array: ", savedArray)
-        catBreedManager.getCatBreed()
+        defaults.set(data, forKey: UserDefaultsKeys.catBreeds.rawValue)
+        defaults.synchronize()
+    }
+    
+    private func getCurrentDateString() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        return dateFormatter.string(from: date)
     }
 }
