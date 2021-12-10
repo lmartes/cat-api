@@ -5,10 +5,9 @@ class ViewController: UIViewController, CatBreedManagerDelegate {
     @IBOutlet weak var breedTitle: UILabel!
     @IBOutlet weak var breedImage: UIImageView!
     @IBOutlet weak var breedActionsView: UIView!
-    var catBreedManager: CatBreedManager = CatBreedManager()
-    var catBreedResponse: CatBreedResponse = CatBreedResponse()
-    var storeDefaultsCatBreeds: [CatBreedResponse] = []
-    let defaults = UserDefaults.standard
+    private var catBreedManager: CatBreedManager = CatBreedManager()
+    private var catBreedResponse: CatBreedResponse = CatBreedResponse()
+    private var storeDefaultsCatBreeds: [CatBreedResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +65,8 @@ class ViewController: UIViewController, CatBreedManagerDelegate {
         guard let data = storeDefaultsCatBreeds.toJSONString(prettyPrint: false) else {
             return
         }
-        defaults.set(data, forKey: UserDefaultsKeys.catBreeds.rawValue)
-        defaults.synchronize()
+        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.catBreeds.rawValue)
+        UserDefaults.standard.synchronize()
     }
     
     private func getCurrentDateString() -> String {
