@@ -1,69 +1,78 @@
 import UIKit
-import Alamofire
-import ObjectMapper
 import SVProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CatBreedManagerDelegate {
     @IBOutlet weak var breedTitle: UILabel!
     @IBOutlet weak var breedImage: UIImageView!
-    private var catsByBreed: [CatBreedResponse] = []
+    @IBOutlet weak var breedActionsView: UIView!
+    private var catBreedManager: CatBreedManager = CatBreedManager()
+    private var catBreedResponse: CatBreedResponse = CatBreedResponse()
+    private var storeDefaultsCatBreeds: [CatBreedResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestCatAPI()
+        catBreedManager.delegate = self
+        catBreedManager.fetchBreeds()
     }
     
-    func requestCatAPI() {
-        //let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
-        let url = "https://api.thecatapi.com/v1/breeds?limit=20&page=0"
+    func didLoadRequest() {
         SVProgressHUD.show()
-        AF.request(url).responseJSON { (response) in
-            SVProgressHUD.dismiss()
-            if let error = response.error {
-                print("Error: ", error)
-            }
-            
-            if let data = response.data {
-                self.parseJSON(data)
-            }
-        }
+        breedTitle.isHidden = true
+        breedImage.isHidden = true
+        breedActionsView.isHidden = true
     }
     
-    func parseJSON(_ data: Data) {
-        let str = String(decoding: data, as: UTF8.self)
-        guard let cats = Mapper<CatBreedResponse>().mapArray(JSONString: str) else {
-            return
-        }
-        
-        catsByBreed = cats
+    func didFinishRequest() {
+        SVProgressHUD.dismiss()
+        breedTitle.isHidden = false
+        breedImage.isHidden = false
+        breedActionsView.isHidden = false
+    }
+    
+    func didBreedUpdate(_ catBreedManager: CatBreedManager, catByBreed: CatBreedResponse) {
+        catBreedResponse = catByBreed
         DispatchQueue.main.async {
-            self.updateUI()
+            self.breedTitle.text = catByBreed.getName()
+            guard let breedImageURL = catByBreed.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
+                return
+            }
+            self.breedImage.image = UIImage(data: data)
         }
     }
     
-    func updateUI() {
-        if catsByBreed.count <= 0 {
-            return
-        }
-        
-        let breedName = catsByBreed.first?.getName()
-        breedTitle.text = breedName
-        
-        guard let breedImageURL = catsByBreed.first?.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
-            return
-        }
-        self.breedImage.image = UIImage(data: data)
-        
-        catsByBreed.removeFirst()
+    func didFailWithError(error: Error) {
+        print("Error: ", error)
     }
     
 // MARK: - IBActions
     @IBAction func actionLike(_ sender: Any) {
-        updateUI()
+        saveUserDefaults(withActionsLike: true)
+        catBreedManager.getCatBreed()
     }
     
+    /// guard let str = defaults.string(forKey: UserDefaultsKeys.catBreeds.rawValue) else {
+    ///     return
+    /// }
+    /// print(str)
     @IBAction func actionDislike(_ sender: Any) {
-        updateUI()
+        saveUserDefaults(withActionsLike: false)
+        catBreedManager.getCatBreed()
+    }
+    
+    private func saveUserDefaults(withActionsLike: Bool) {
+        catBreedResponse.setAction(like: withActionsLike, date: getCurrentDateString())
+        storeDefaultsCatBreeds.append(catBreedResponse)
+        guard let data = storeDefaultsCatBreeds.toJSONString(prettyPrint: false) else {
+            return
+        }
+        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.catBreeds.rawValue)
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func getCurrentDateString() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        return dateFormatter.string(from: date)
     }
 }
-

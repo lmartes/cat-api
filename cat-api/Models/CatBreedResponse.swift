@@ -5,6 +5,10 @@ struct CatBreedResponse: Mappable {
     private var id: String = ""
     private var name: String = ""
     private var image: CatBreedImage?
+    private var like: Bool = false
+    private var date: String = ""
+    
+    init() {}
     
     init?(map: Map) {}
     
@@ -12,6 +16,8 @@ struct CatBreedResponse: Mappable {
         id <- map["id"]
         name <- map["name"]
         image <- map["image"]
+        like <- map["like"]
+        date <- map["date"]
     }
     
     func getID() -> String {
@@ -24,5 +30,10 @@ struct CatBreedResponse: Mappable {
     
     func getCatBreedImage() -> CatBreedImage {
         return image!
+    }
+    
+    mutating func setAction(like: Bool, date: String) {
+        self.like = like
+        self.date = date
     }
 }
