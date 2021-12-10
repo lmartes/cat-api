@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-struct CatAPIData: Mappable {
+struct CatBreedImage: Mappable {
     private var id: String = ""
     private var url: String = ""
     
@@ -12,11 +12,12 @@ struct CatAPIData: Mappable {
         url <- map["url"]
     }
     
-    func getID() -> String {
+    func getId() -> String {
         return id
     }
     
-    func getUrl() -> String {
-        return url
+    func getURL() -> URL? {
+        return URL(string: url)
     }
+    
 }
