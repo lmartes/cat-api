@@ -62,7 +62,3 @@ class ViewController: UIViewController, CatBreedManagerDelegate {
         catBreedManager.getCatBreed()
     }
 }
-
-enum UserDefaultsKeys: String {
-    case catBreeds = "CatBreedsDefaults"
-}
