@@ -6,6 +6,7 @@ import SVProgressHUD
 class ViewController: UIViewController {
     @IBOutlet weak var breedTitle: UILabel!
     @IBOutlet weak var breedImage: UIImageView!
+    @IBOutlet weak var breedActionsView: UIView!
     private var catsByBreed: [CatBreedResponse] = []
     
     override func viewDidLoad() {
@@ -14,11 +15,10 @@ class ViewController: UIViewController {
     }
     
     func requestCatAPI() {
+        loadingRequest()
         //let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
         let url = "https://api.thecatapi.com/v1/breeds?limit=20&page=0"
-        SVProgressHUD.show()
         AF.request(url).responseJSON { (response) in
-            SVProgressHUD.dismiss()
             if let error = response.error {
                 print("Error: ", error)
             }
@@ -38,7 +38,22 @@ class ViewController: UIViewController {
         catsByBreed = cats
         DispatchQueue.main.async {
             self.updateUI()
+            self.finishingRequest()
         }
+    }
+    
+    private func loadingRequest() {
+        SVProgressHUD.show()
+        breedTitle.isHidden = true
+        breedImage.isHidden = true
+        breedActionsView.isHidden = true
+    }
+    
+    private func finishingRequest() {
+        SVProgressHUD.dismiss()
+        breedTitle.isHidden = false
+        breedImage.isHidden = false
+        breedActionsView.isHidden = false
     }
     
     func updateUI() {
@@ -46,10 +61,14 @@ class ViewController: UIViewController {
             return
         }
         
-        let breedName = catsByBreed.first?.getName()
+        guard let cat = catsByBreed.first else {
+            return
+        }
+        
+        let breedName = cat.getName()
         breedTitle.text = breedName
         
-        guard let breedImageURL = catsByBreed.first?.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
+        guard let breedImageURL = cat.getCatBreedImage().getURL(), let data = try? Data(contentsOf: breedImageURL) else {
             return
         }
         self.breedImage.image = UIImage(data: data)

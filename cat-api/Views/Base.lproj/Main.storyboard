@@ -96,6 +96,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="breedActionsView" destination="abP-bU-rpH" id="8E0-ej-wvi"/>
                         <outlet property="breedImage" destination="rKZ-XD-gmM" id="ghc-PV-fvF"/>
                         <outlet property="breedTitle" destination="TeP-Eg-lTN" id="jhd-eC-kkm"/>
                     </connections>

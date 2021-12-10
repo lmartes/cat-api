@@ -5,6 +5,15 @@ struct CatBreedResponse: Mappable {
     private var id: String = ""
     private var name: String = ""
     private var image: CatBreedImage?
+    private var like: Bool = false
+    private var date: Date?
+    
+    init() {}
+    
+    init(like: Bool, date: Date) {
+        self.like = like
+        self.date = date
+    }
     
     init?(map: Map) {}
     
