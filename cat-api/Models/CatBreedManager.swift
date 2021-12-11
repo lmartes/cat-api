@@ -4,13 +4,12 @@ import ObjectMapper
 
 class CatBreedManager {
     let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
-    let catBreedUrl = "https://api.thecatapi.com/v1/breeds?limit=20&page=0"
     var delegate: CatBreedManagerDelegate?
     var catsByBreed: [CatBreedResponse] = []
     
     func fetchBreeds() {
         self.delegate?.didLoadRequest()
-        let url = catBreedUrl
+        let url = "https://api.thecatapi.com/v1/breeds?\(apiKey)&limit=20&page=0"
         AF.request(url).responseJSON { (response) in
             if let error = response.error {
                 self.delegate?.didFailWithError(error: error)
@@ -24,7 +23,7 @@ class CatBreedManager {
         }
     }
     
-    func parseJSON(_ data: Data) {
+    private func parseJSON(_ data: Data) {
         let str = String(decoding: data, as: UTF8.self)
         guard let cats = Mapper<CatBreedResponse>().mapArray(JSONString: str) else {
             print("No se pudo mappear la respuesta")
