@@ -44,4 +44,19 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         historyDetailCell.setupView(catBreed: catsByBreed[indexPath.row])
         return historyDetailCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let idBreed = catsByBreed[indexPath.row].getID()
+        self.performSegue(withIdentifier: "goToDetailViewController", sender: idBreed)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "goToDetailViewController", let detailViewController = segue.destination as? DetailsViewController else {
+            return
+        }
+        
+        if let id = sender as? String {
+            detailViewController.fetchBreedsById(withId: id)
+        }
+    }
 }
