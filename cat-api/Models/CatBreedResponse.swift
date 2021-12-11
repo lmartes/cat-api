@@ -4,7 +4,7 @@ import ObjectMapper
 struct CatBreedResponse: Mappable {
     private var id: String = ""
     private var name: String = ""
-    private var image: CatBreedImage?
+    private var image: CatBreedImage = CatBreedImage()
     private var like: Bool = false
     private var date: String = ""
     
@@ -20,7 +20,7 @@ struct CatBreedResponse: Mappable {
         date <- map["date"]
     }
     
-    func getID() -> String {
+    func getId() -> String {
         return id
     }
     
@@ -29,7 +29,7 @@ struct CatBreedResponse: Mappable {
     }
     
     func getCatBreedImage() -> CatBreedImage {
-        return image!
+        return image
     }
     
     func getLike() -> Bool {

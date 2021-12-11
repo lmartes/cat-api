@@ -3,9 +3,9 @@ import Alamofire
 import ObjectMapper
 
 class CatBreedManager {
-    let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
     var delegate: CatBreedManagerDelegate?
-    var catsByBreed: [CatBreedResponse] = []
+    private let apiKey = "api_key=f227d41d-60de-4c96-b588-2cdba266e0ba"
+    private var catsByBreed: [CatBreedResponse] = []
     
     func fetchBreeds() {
         self.delegate?.didLoadRequest()
@@ -24,8 +24,8 @@ class CatBreedManager {
     }
     
     private func parseJSON(_ data: Data) {
-        let str = String(decoding: data, as: UTF8.self)
-        guard let cats = Mapper<CatBreedResponse>().mapArray(JSONString: str) else {
+        let data = String(decoding: data, as: UTF8.self)
+        guard let cats = Mapper<CatBreedResponse>().mapArray(JSONString: data) else {
             print("No se pudo mappear la respuesta")
             return
         }

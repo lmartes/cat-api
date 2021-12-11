@@ -4,17 +4,12 @@ import ObjectMapper
 /// Identifier: historyViewControllerIdentifier
 class HistoryViewController: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
-    var catsByBreed: [CatBreedResponse] = []
+    private var catsByBreed: [CatBreedResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getDefaults()
         setDelegates()
-    }
-    
-    private func setDelegates() {
-        historyTableView.delegate = self
-        historyTableView.dataSource = self
     }
     
     private func getDefaults() {
@@ -27,6 +22,11 @@ class HistoryViewController: UIViewController {
             return
         }
         catsByBreed = cats
+    }
+    
+    private func setDelegates() {
+        historyTableView.delegate = self
+        historyTableView.dataSource = self
     }
 
 }
@@ -46,7 +46,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let idBreed = catsByBreed[indexPath.row].getID()
+        let idBreed = catsByBreed[indexPath.row].getId()
         self.performSegue(withIdentifier: "goToDetailViewController", sender: idBreed)
     }
     

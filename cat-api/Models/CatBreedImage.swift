@@ -5,6 +5,8 @@ struct CatBreedImage: Mappable {
     private var id: String = ""
     private var url: String = ""
     
+    init() {}
+    
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {

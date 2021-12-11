@@ -15,15 +15,11 @@ class HistoryDetailTableViewCell: UITableViewCell {
         breedImage.image = catBreed.getCatBreedImage().getImage()
         breedName.text = catBreed.getName()
         breedDate.text = catBreed.getDate()
-        setBreedImageAction(like: catBreed.getLike())
+        breedImageAction.image = getBreedImageAction(like: catBreed.getLike())
     }
     
-    private func setBreedImageAction(like: Bool) {
-        if like {
-            breedImageAction.image = UIImage(named: "like-icon")
-            return
-        }
-        breedImageAction.image = UIImage(named: "dislike-icon")
+    private func getBreedImageAction(like: Bool) -> UIImage? {
+        return like ? UIImage(named: "like-icon") : UIImage(named: "dislike-icon")
     }
 
 }

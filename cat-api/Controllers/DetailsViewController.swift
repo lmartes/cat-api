@@ -29,12 +29,11 @@ class DetailsViewController: UIViewController {
     }
     
     private func parseJSON(_ data: Data) {
-        let str = String(decoding: data, as: UTF8.self)
-        guard let breedDetailResponse = Mapper<CatBreedDetailResponse>().map(JSONString: str) else {
+        let data = String(decoding: data, as: UTF8.self)
+        guard let breedDetailResponse = Mapper<CatBreedDetailResponse>().map(JSONString: data) else {
             print("No se pudo mappear la respuesta")
             return
         }
-        print(breedDetailResponse)
         breedDetail = breedDetailResponse
     }
     
