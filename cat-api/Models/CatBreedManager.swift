@@ -35,6 +35,7 @@ class CatBreedManager {
     
     func getCatBreed() {
         if catsByBreed.count <= 0 {
+            self.delegate?.didFinishVote()
             return
         }
         

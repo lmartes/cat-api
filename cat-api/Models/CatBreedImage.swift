@@ -16,7 +16,14 @@ struct CatBreedImage: Mappable {
         return id
     }
     
-    func getURL() -> URL? {
+    func getImage() -> UIImage? {
+        guard let breedImageURL = getURL(), let data = try? Data(contentsOf: breedImageURL) else {
+            return UIImage(named: "cat-icon")
+        }
+        return UIImage(data: data)
+    }
+    
+    private func getURL() -> URL? {
         return URL(string: url)
     }
     

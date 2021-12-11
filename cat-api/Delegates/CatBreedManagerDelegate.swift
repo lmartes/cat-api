@@ -5,4 +5,5 @@ protocol CatBreedManagerDelegate {
     func didFinishRequest()
     func didBreedUpdate(_ catBreedManager: CatBreedManager, catByBreed: CatBreedResponse)
     func didFailWithError(error: Error)
+    func didFinishVote()
 }

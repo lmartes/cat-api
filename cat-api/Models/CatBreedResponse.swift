@@ -32,6 +32,14 @@ struct CatBreedResponse: Mappable {
         return image!
     }
     
+    func getLike() -> Bool {
+        return like
+    }
+    
+    func getDate() -> String {
+        return date
+    }
+    
     mutating func setAction(like: Bool, date: String) {
         self.like = like
         self.date = date
