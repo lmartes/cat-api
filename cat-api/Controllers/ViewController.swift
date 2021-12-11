@@ -69,7 +69,7 @@ class ViewController: UIViewController, CatBreedManagerDelegate {
     private func getCurrentDateString() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY/MM/dd"
+        dateFormatter.dateFormat = "MMM d, yyyy."
         return dateFormatter.string(from: date)
     }
 }
