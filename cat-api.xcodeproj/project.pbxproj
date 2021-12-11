@@ -17,6 +17,8 @@
 		BF5FBDA02763CAC70050AFCC /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FBD9F2763CAC70050AFCC /* UserDefaultsKeys.swift */; };
 		BF5FBDA4276412980050AFCC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FBDA3276412980050AFCC /* HistoryViewController.swift */; };
 		BF5FBDA62764177E0050AFCC /* HistoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FBDA52764177E0050AFCC /* HistoryDetailTableViewCell.swift */; };
+		BF5FBDA827648F4A0050AFCC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FBDA727648F4A0050AFCC /* DetailsViewController.swift */; };
+		BF5FBDAA2764937D0050AFCC /* CatBreedDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5FBDA92764937D0050AFCC /* CatBreedDetailResponse.swift */; };
 		BF9AE5852763794F00516013 /* CatBreedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AE5842763794F00516013 /* CatBreedManager.swift */; };
 		BF9AE58827638CF600516013 /* CatBreedManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9AE58727638CF600516013 /* CatBreedManagerDelegate.swift */; };
 		BFE0B9412762684A00BB056B /* CatBreedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0B9402762684A00BB056B /* CatBreedResponse.swift */; };
@@ -37,6 +39,8 @@
 		BF5FBD9F2763CAC70050AFCC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		BF5FBDA3276412980050AFCC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		BF5FBDA52764177E0050AFCC /* HistoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		BF5FBDA727648F4A0050AFCC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		BF5FBDA92764937D0050AFCC /* CatBreedDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedDetailResponse.swift; sourceTree = "<group>"; };
 		BF9AE5842763794F00516013 /* CatBreedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedManager.swift; sourceTree = "<group>"; };
 		BF9AE58727638CF600516013 /* CatBreedManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedManagerDelegate.swift; sourceTree = "<group>"; };
 		BFE0B9402762684A00BB056B /* CatBreedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedResponse.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				BF2A90B1275FF1F700444239 /* ViewController.swift */,
 				BF5FBDA3276412980050AFCC /* HistoryViewController.swift */,
 				BF5FBDA52764177E0050AFCC /* HistoryDetailTableViewCell.swift */,
+				BF5FBDA727648F4A0050AFCC /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,10 +131,11 @@
 		BF96536C2762400F001EB918 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BF5FBD9F2763CAC70050AFCC /* UserDefaultsKeys.swift */,
 				BF9AE5842763794F00516013 /* CatBreedManager.swift */,
 				BFE0B9402762684A00BB056B /* CatBreedResponse.swift */,
 				BFE0B94A2763107200BB056B /* CatBreedImage.swift */,
-				BF5FBD9F2763CAC70050AFCC /* UserDefaultsKeys.swift */,
+				BF5FBDA92764937D0050AFCC /* CatBreedDetailResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 				BF2A90B2275FF1F700444239 /* ViewController.swift in Sources */,
 				BF2A90AE275FF1F700444239 /* AppDelegate.swift in Sources */,
 				BF2A90B0275FF1F700444239 /* SceneDelegate.swift in Sources */,
+				BF5FBDAA2764937D0050AFCC /* CatBreedDetailResponse.swift in Sources */,
+				BF5FBDA827648F4A0050AFCC /* DetailsViewController.swift in Sources */,
 				BF9AE5852763794F00516013 /* CatBreedManager.swift in Sources */,
 				BF5FBDA02763CAC70050AFCC /* UserDefaultsKeys.swift in Sources */,
 				BFE0B9412762684A00BB056B /* CatBreedResponse.swift in Sources */,
